@@ -68,18 +68,24 @@ def draw_canvas():
     cv2.imshow("Catavento", canvas)
 
 def translate():
-    pass
+    global obj_3
+    global canvas
+    
+    canvas = np.ones(WINDOW_SIZE, dtype="uint8") * 40 
+    obj_3 = obj_3._replace(x = obj_3.x + 10)
 
-def rotate(obj):
+def rotate():
     pass
 
 def scale():
-    pass
+    global obj_2
+    global canvas
+
+    canvas = np.ones(WINDOW_SIZE, dtype="uint8") * 40 
+    obj_2 = obj_2._replace(scale = obj_2.scale + 1)
 
 draw_canvas()
 while True:
-    key = cv2.waitKey(1000)
-
     # it waits till we press a key
     key = cv2.waitKey(0)
     
@@ -89,13 +95,13 @@ while True:
         cv2.destroyAllWindows()
         break
 
-    elif key == "t":
+    elif key == 116:
         translate()
-    
-    elif key == "r":
+
+    elif key == 114:
         rotate()
 
-    elif key == "s":
+    elif key == 115:
         scale()
 
     draw_canvas()
