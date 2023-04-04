@@ -50,6 +50,8 @@ def draw_obj_5(x:int, y:int , scale:int):
     pass
     
 canvas = np.ones(WINDOW_SIZE, dtype="uint8") * 40
+# MEDIDA DE EFICIENCIA DA DISCIPLINA DE COMPUTAÇÃO VISUAL
+
 while True:
     user_input = input("para encerrar aperte q")
 
