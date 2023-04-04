@@ -1,5 +1,7 @@
 # MEDIDA DE EFICIENCIA DA DISCIPLINA DE COMPUTAÇÃO VISUAL
-
+# - Gustavo Pereira de Oliveira
+# - Guilherme Gonzaga Baltieri
+# - Emanuel Henrique Falcão Albuquerque
 import cv2
 import numpy as np
 from collections import namedtuple
