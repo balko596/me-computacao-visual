@@ -16,8 +16,8 @@ Object = namedtuple("Object", "x y scale theta")
 obj_1 = Object(320, 320, 5, 0)
 obj_2 = Object(480, 480, 5, 0)
 obj_3 = Object(110, 110, 5, 0)
-obj_4 = Object(0, 0, 5, 0)
-obj_5 = Object(0, 0, 5, 0)
+obj_4 = Object(65, 450, 5, 0)
+obj_5 = Object(500, 100, 5, 0)
 
 # define colors
 BLUE  = (255,  0 ,  0 )
@@ -54,10 +54,22 @@ def draw_obj_3(x:int, y:int, scale:int, theta:int):
     cv2.circle(canvas, center_2, int(r*1.7), BACK, cv2.FILLED)
 
 def draw_obj_4(x:int, y:int, scale:int, theta:int):
-    pass
+    init_point = (x+3*scale, y-20*scale)
+    end_point = (x-3*scale,y+20*scale)
+    init_point2 = (x+11*scale,y-5*scale)
+    end_point2 = (x-11*scale,y-10*scale)
+    cv2.rectangle(canvas, pt1=init_point, pt2=end_point, color=BLUE, thickness=-1)
+    cv2.rectangle(canvas, pt1=init_point2, pt2=end_point2, color=BLUE, thickness=-1)
+    
 
 def draw_obj_5(x:int, y:int, scale:int, theta:int):
-    pass
+    center_1 = (x,y)
+    r = 8*scale
+    init_point = (x+35*scale, y-40*scale)
+    end_point = (x-35*scale,y+20*scale)
+    
+    cv2.rectangle(canvas, pt1=init_point, pt2=end_point, color=WHITE, thickness=-1)
+    cv2.circle(canvas,center_1, r*2,RED, cv2.FILLED)
     
 def draw_canvas():
     draw_obj_1(obj_1.x, obj_1.y, obj_1.scale, obj_1.theta)
@@ -68,24 +80,18 @@ def draw_canvas():
     cv2.imshow("Catavento", canvas)
 
 def translate():
-    global obj_3
-    global canvas
-    
-    canvas = np.ones(WINDOW_SIZE, dtype="uint8") * 40 
-    obj_3 = obj_3._replace(x = obj_3.x + 10)
+    pass
 
-def rotate():
+def rotate(obj):
     pass
 
 def scale():
-    global obj_2
-    global canvas
-
-    canvas = np.ones(WINDOW_SIZE, dtype="uint8") * 40 
-    obj_2 = obj_2._replace(scale = obj_2.scale + 1)
+    pass
 
 draw_canvas()
 while True:
+    key = cv2.waitKey(1000)
+
     # it waits till we press a key
     key = cv2.waitKey(0)
     
@@ -95,13 +101,13 @@ while True:
         cv2.destroyAllWindows()
         break
 
-    elif key == 116:
+    elif key == "t":
         translate()
-
-    elif key == 114:
+    
+    elif key == "r":
         rotate()
 
-    elif key == 115:
+    elif key == "s":
         scale()
 
     draw_canvas()
